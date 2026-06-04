@@ -79,6 +79,13 @@ body.rtl {
 
 .nav-links li {
     margin-left: 2rem;
+    display: flex;
+    align-items: center;
+    flex-shrink: 0; /* Fix: Prevents the list items from shrinking and squishing text */
+}
+
+body.rtl .nav-links {
+    flex-direction: row; /* Maintains correct inline direction in RTL */
 }
 
 body.rtl .nav-links li {
@@ -91,6 +98,11 @@ body.rtl .nav-links li {
     text-decoration: none;
     font-weight: 500;
     transition: color 0.3s ease;
+    text-align: center;
+    line-height: 1.2; 
+    display: inline-block;
+    white-space: nowrap !important; /* Fix: Forces text to stay on one line */
+    width: max-content; /* Fix: Ensures the box is wide enough for the text */
 }
 
 .nav-links a:hover {
@@ -142,6 +154,7 @@ body.rtl .nav-links li {
     font-size: 0.85rem;
     transition: all 0.3s ease;
     margin-left: 1.5rem;
+    white-space: nowrap;
 }
 
 body.rtl .lang-btn {
@@ -513,6 +526,7 @@ footer {
         border-bottom: 1px solid #1e293b;
         transition: top 0.4s cubic-bezier(0.16, 1, 0.3, 1);
         box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+        flex-direction: column; /* Force stack on mobile drop panels */
     }
 
     .nav-links.active {
