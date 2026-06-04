@@ -3,20 +3,579 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>F1RE88 | Official Website</title>
-    <link rel="stylesheet" href="style.css">
+    <title>F1RE88</title>
+    <link rel="icon" href="ICON.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+    /* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: #0f172a;
+    color: #f8fafc;
+    line-height: 1.6;
+    transition: direction 0.3s ease;
+}
+
+/* RTL Layout Styling for Arabic */
+body.rtl {
+    direction: rtl;
+    text-align: right;
+}
+
+/* Navigation Bar */
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: rgba(15, 23, 42, 0.95);
+    backdrop-filter: blur(10px);
+    z-index: 1000;
+    border-bottom: 1px solid #1e293b;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 1rem 2rem;
+}
+
+/* New brand wrapper to hold logo and hamburger together */
+.brand-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem; /* Gap between the logo and hamburger button */
+    z-index: 1001;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #f8fafc;
+    text-decoration: none;
+    letter-spacing: 1px;
+}
+
+.logo span {
+    color: #38bdf8;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    align-items: center;
+}
+
+.nav-links li {
+    margin-left: 2rem;
+}
+
+body.rtl .nav-links li {
+    margin-left: 0;
+    margin-right: 2rem;
+}
+
+.nav-links a {
+    color: #94a3b8;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: #38bdf8;
+}
+
+/* Hamburger Menu Icon */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 24px;
+    height: 18px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.hamburger span {
+    width: 100%;
+    height: 2px;
+    background-color: #f8fafc;
+    border-radius: 2px;
+    transition: all 0.3s ease;
+}
+
+/* Hamburger Transformations on Active */
+.hamburger.active span:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+}
+
+.hamburger.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+}
+
+/* Language Switcher Button */
+.lang-btn {
+    background-color: #1e293b;
+    color: #38bdf8;
+    border: 1px solid #334155;
+    padding: 0.4rem 0.9rem;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 0.85rem;
+    transition: all 0.3s ease;
+    margin-left: 1.5rem;
+}
+
+body.rtl .lang-btn {
+    margin-left: 0;
+    margin-right: 1.5rem;
+}
+
+.lang-btn:hover {
+    background-color: #38bdf8;
+    color: #0f172a;
+    border-color: #38bdf8;
+}
+
+/* Hero / Profile Section */
+.hero-section {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 6rem 2rem 4rem 2rem;
+    background: radial-gradient(circle at center, #1e293b 0%, #0f172a 100%);
+}
+
+.hero-container {
+    max-width: 800px;
+    width: 100%;
+}
+
+/* Perfect Circular Image styling */
+.profile-img-container {
+    width: 220px;
+    height: 220px;
+    margin: 0 auto 1rem auto;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 4px solid #38bdf8;
+    box-shadow: 0 0 25px rgba(56, 189, 248, 0.4);
+}
+
+.profile-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.hero-section h1 {
+    font-size: 3rem;
+    margin-bottom: 0.5rem;
+    letter-spacing: -1px;
+    word-wrap: break-word;
+}
+
+body.rtl .hero-section h1 {
+    letter-spacing: 0;
+}
+
+.subtitle {
+    font-size: 1.25rem;
+    color: #38bdf8;
+    margin-bottom: 1.5rem;
+    font-weight: 500;
+}
+
+.social-icons a {
+    color: #94a3b8;
+    font-size: 1.5rem;
+    margin: 0 0.75rem;
+    transition: color 0.3s ease, transform 0.3s ease;
+    display: inline-block;
+}
+
+.social-icons a:hover {
+    color: #38bdf8;
+    transform: translateY(-3px);
+}
+
+/* General Content Sections */
+.content-section {
+    padding: 5rem 2rem;
+}
+
+.tech-bg {
+    background-color: #1e293b;
+}
+
+.section-container {
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: center;
+    width: 100%;
+}
+
+.section-container h2 {
+    font-size: 2.25rem;
+    margin-bottom: 0.5rem;
+}
+
+.underline {
+    width: 60px;
+    height: 4px;
+    background-color: #38bdf8;
+    margin: 0 auto 2rem auto;
+    border-radius: 2px;
+}
+
+.section-container p {
+    color: #cbd5e1;
+    font-size: 1.1rem;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+/* Projects Grid (Responsive) */
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.project-card {
+    background-color: #0f172a;
+    padding: 2rem;
+    border-radius: 12px;
+    text-align: left;
+    border: 1px solid #334155;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+body.rtl .project-card {
+    text-align: right;
+}
+
+.project-card:hover {
+    transform: translateY(-5px);
+    border-color: #38bdf8;
+}
+
+.project-card h3 {
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
+    color: #f8fafc;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.project-card h3 img {
+    border-radius: 6px;
+    background-color: #1e293b;
+    object-fit: cover;
+    flex-shrink: 0;
+}
+
+.project-card p {
+    font-size: 0.95rem;
+    color: #94a3b8;
+    margin-bottom: 1.5rem;
+    text-align: left;
+}
+
+body.rtl .project-card p {
+    text-align: right;
+}
+
+/* Buttons */
+.btn {
+    display: inline-block;
+    padding: 0.5rem 1.2rem;
+    background-color: transparent;
+    color: #38bdf8;
+    border: 1px solid #38bdf8;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #38bdf8;
+    color: #0f172a;
+}
+
+.contact-btn {
+    display: inline-block;
+    margin-top: 2rem;
+    padding: 0.75rem 2rem;
+    background-color: #38bdf8;
+    color: #0f172a;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+    border: none;
+}
+
+.contact-btn:hover {
+    background-color: #7dd3fc;
+}
+
+/* Pop-up Modal Base Overlay Styling */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(15, 23, 42, 0.85);
+    backdrop-filter: blur(8px);
+    z-index: 2000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+    padding: 1.5rem;
+}
+
+.modal-overlay.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.modal-box {
+    background-color: #1e293b;
+    border: 1px solid #334155;
+    padding: 2.5rem 2rem;
+    border-radius: 16px;
+    max-width: 480px;
+    width: 100%;
+    text-align: center;
+    position: relative;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+    transform: translateY(-20px);
+    transition: transform 0.3s ease;
+}
+
+.modal-overlay.active .modal-box {
+    transform: translateY(0);
+}
+
+.modal-close {
+    position: absolute;
+    top: 1rem;
+    right: 1.25rem;
+    font-size: 1.5rem;
+    color: #64748b;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+body.rtl .modal-close {
+    right: auto;
+    left: 1.25rem;
+}
+
+.modal-close:hover {
+    color: #f8fafc;
+}
+
+.modal-box h3 {
+    font-size: 1.75rem;
+    margin-bottom: 0.5rem;
+    color: #f8fafc;
+}
+
+.modal-box p {
+    color: #94a3b8;
+    font-size: 0.95rem;
+    margin-bottom: 2rem;
+}
+
+.modal-options {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.modal-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    padding: 0.9rem;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.05rem;
+    transition: transform 0.2s ease, filter 0.2s ease;
+    color: #ffffff;
+}
+
+.modal-link:hover {
+    transform: translateY(-2px);
+    filter: brightness(1.1);
+}
+
+.modal-whatsapp { background-color: #25d366; }
+.modal-discord { background-color: #5865f2; }
+.modal-messenger { background-color: #0084ff; }
+.modal-facebook { background-color: #1877f2; }
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 2rem;
+    background-color: #090d16;
+    border-top: 1px solid #1e293b;
+    color: #64748b;
+    font-size: 0.9rem;
+}
+
+/* Responsive Media Queries */
+@media (max-width: 768px) {
+    .nav-container {
+        padding: 1.2rem 2rem;
+    }
+    
+    .hamburger {
+        display: flex; /* Show icon on tablet/mobile screens */
+    }
+
+    /* Transform main nav links into a sliding full screen background panel drawer */
+    .nav-links {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 75%;
+        max-width: 300px;
+        height: 100vh;
+        background-color: rgba(15, 23, 42, 0.98);
+        border-left: 1px solid #1e293b;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 2rem;
+        transition: right 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        box-shadow: -10px 0 30px rgba(0,0,0,0.5);
+    }
+
+    /* RTL specific layout behavior rules for mobile side navigation panel drawer sliding */
+    body.rtl .nav-links {
+        right: auto;
+        left: -100%;
+        border-left: none;
+        border-right: 1px solid #1e293b;
+        transition: left 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        box-shadow: 10px 0 30px rgba(0,0,0,0.5);
+    }
+
+    /* Active dynamic toggle styles rules triggers */
+    .nav-links.active {
+        right: 0;
+    }
+
+    body.rtl .nav-links.active {
+        left: 0;
+    }
+
+    .nav-links li {
+        margin-left: 0 !important;
+    }
+
+    body.rtl .nav-links li {
+        margin-right: 0 !important;
+    }
+
+    .nav-links a {
+        font-size: 1.25rem;
+    }
+
+    .lang-btn {
+        margin: 1rem 0 0 0 !important;
+    }
+
+    .hero-section h1 {
+        font-size: 2.25rem;
+    }
+    
+    .profile-img-container {
+        width: 180px;
+        height: 180px;
+    }
+}
+
+@media (max-width: 480px) {
+    .content-section {
+        padding: 4rem 1rem;
+    }
+    
+    .hero-section h1 {
+        font-size: 1.85rem;
+    }
+
+    .projects-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .modal-box {
+        padding: 2rem 1.25rem;
+    }
+
+    .modal-box h3 {
+        font-size: 1.4rem;
+    }
+    
+    .nav-links {
+        width: 85%;
+    }
+}
+</style>
 </head>
 <body>
 
     <nav class="navbar">
         <div class="nav-container">
-            <a href="#" class="logo">F1RE<span>88</span></a>
-            <ul class="nav-links">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#contact">Contact</a></li>
+            <div class="brand-wrapper">
+                <a href="#" class="logo">F1RE<span>88</span></a>
+                <button class="hamburger" id="hamburger-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+            
+            <ul class="nav-links" id="menu-links">
+                <li><a href="#home" data-en="Home" data-ar="الرئيسية">Home</a></li>
+                <li><a href="#about" data-en="About" data-ar="من أنا">About</a></li>
+                <li><a href="#projects" data-en="Projects" data-ar="مشاريعي">Projects</a></li>
+                <li><a href="#contact" data-en="Contact" data-ar="اتصل بي">Contact</a></li>
+                <button id="lang-toggle" class="lang-btn">العربية</button>
             </ul>
         </div>
     </nav>
@@ -24,57 +583,194 @@
     <header id="home" class="hero-section">
         <div class="hero-container">
             <div class="profile-img-container">
-                <img src="me-full.jpg" alt="Profile Image" class="profile-img">
+                <img src="me-full.png" alt="Profile Image" class="profile-img">
             </div>
-            <h1>Welcome to my World</h1>
-            <p class="subtitle">Web Developer & Tech Enthusiast</p>
+            <h1>Hamza Mohammed Naiem</h1>
+            <p class="subtitle" data-en="Web Developer & App Developer" data-ar="مطور ويب ومطور تطبيقات">Web Developer & App Developer</p>
             <div class="social-icons">
-                <a href="https://github.com/f1re88" target="_blank"><i class="fab fa-github"></i></a>
-                <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
-                <a href="#" target="_blank"><i class="fab fa-discord"></i></a>
+                <a href="https://github.com/f1re88" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+                <a href="https://wa.me/966572005086" target="_blank" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                <a href="https://discord.com/users/f1re__blaack88" target="_blank" title="Discord: f1re__blaack88"><i class="fab fa-discord"></i></a>
             </div>
         </div>
     </header>
 
     <section id="about" class="content-section">
         <div class="section-container">
-            <h2>About Me</h2>
+            <h2 data-en="About Me" data-ar="من أنا">About Me</h2>
             <div class="underline"></div>
-            <p>Welcome to my official platform. I am passionate about web development, building clean user interfaces, exploring new programming frameworks, and working on creative digital projects. Dive in to see what I've been working on lately!</p>
+            <p data-en="Welcome to my official platform. My alias username is F1RE88, but my real name is Hamza. I am passionate about web development, building clean user interfaces, exploring new programming frameworks, and working on creative digital projects. I have 3 years of development experience that you can trust, with a versatile technical background spanning Front-end, Back-end, Motion Graphics, and Android App Development. Dive in to see what I've been working on lately!"
+               data-ar="مرحباً بكم في منصتي الرسمية. اسم الشهرة الخاص بي هو F1RE88، ولكن اسمي الحقيقي هو حمزة. أنا شغوف بتطوير الويب، وبناء واجهات مستخدم متميزة، واستكشاف أطر البرمجة الجديدة، والعمل على مشاريع رقمية إبداعية. لدي 3 سنوات من الخبرة في التطوير وبخلفية تقنية متنوعة تشمل الواجهات الأمامية، الخلفية، الموشن جرافيك، وتطوير تطبيقات الأندرويد. تفضل بالاطلاع على آخر أعمالي!">Welcome to my official platform. My alias username is F1RE88, but my real name is Hamza. I am passionate about web development, building clean user interfaces, exploring new programming frameworks, and working on creative digital projects. I have 3 years of development experience that you can trust, with a versatile technical background spanning Front-end, Back-end, Motion Graphics, and Android App Development. Dive in to see what I've been working on lately!</p>
         </div>
     </section>
 
     <section id="projects" class="content-section tech-bg">
         <div class="section-container">
-            <h2>Featured Projects</h2>
+            <h2 data-en="Featured Projects" data-ar="أبرز المشاريع">Featured Projects</h2>
             <div class="underline"></div>
             <div class="projects-grid">
+                
                 <div class="project-card">
-                    <h3>F1RECHAT</h3>
-                    <p>A responsive real-time web chat framework designed for seamless communication and modern UI design.</p>
-                    <a href="#" class="btn">View Project</a>
+                    <h3><img src="sari.png" alt="" width="35" height="35"><span data-en="Dr. Sari Fusha" data-ar="د. ساري فوشة">Dr. Sari Fusha</span></h3>
+                    <p data-en="A modern academic research repository engineered for scientific portfolio showcase and publication dissemination."
+                       data-ar="مستودع أبحاث أكاديمي حديث تم تصميمه لعرض المحافظ العلمية ونشر الأبحاث والمقالات.">A modern academic research repository engineered for scientific portfolio showcase and publication dissemination.</p>
+                    <a href="https://web-website.github.io/Dr.-Sari-Fusha---Scientific-Research-s/" class="btn" data-en="View Project" data-ar="عرض المشروع">View Project</a>
                 </div>
+                
                 <div class="project-card">
-                    <h3>Web Prototypes</h3>
-                    <p>Experimental interfaces and dynamic applications built using HTML, CSS, JavaScript, and Firebase integration.</p>
-                    <a href="#" class="btn">View Project</a>
+                    <h3><img src="bosila.png" alt="" width="35" height="35"><span data-en="Bosayla" data-ar="بصيلة">Bosayla</span></h3>
+                    <p data-en="A modern medical landing platform engineered for patient acquisition and clinic presentation showcases."
+                       data-ar="منصة طبية تفاعلية حديثة مصممة لربط المرضى وعرض العيادات والخدمات العلاجية بشكل متكامل.">A modern medical landing platform engineered for patient acquisition and clinic presentation showcases.</p>
+                    <a href="https://bosayla.online/" class="btn" data-en="View Project" data-ar="عرض المشروع">View Project</a>
                 </div>
+                
+                <div class="project-card">
+                    <h3><img src="hoox.png" alt="" width="35" height="35"><span data-en="HOOX" data-ar="هوكس">HOOX</span></h3>
+                    <p data-en="A modern retail discovery platform engineered for e-commerce navigation and fashion product localization."
+                       data-ar="منصة تجزئة عصرية تم تصميمها لتسهيل تصفح التجارة الإلكترونية وتحديد مواقع منتجات الأزياء.">A modern retail discovery platform engineered for e-commerce navigation and fashion product localization.</p>
+                    <a href="https://f1re88.github.io/hoox/" class="btn" data-en="View Project" data-ar="عرض المشروع">View Project</a>
+                </div>
+                
+                <div class="project-card">
+                    <h3><img src="story.png" alt="" width="35" height="35"><span data-en="Story" data-ar="ستوري">Story</span></h3>
+                    <p data-en="A modern interactive narrative interface engineered for digital storytelling and bilingual reading engagement."
+                       data-ar="واجهة قصصية تفاعلية حديثة تم تصميمها لسرد القصص الرقمية وتعزيز القراءة بلغات متعددة.">A modern interactive narrative interface engineered for digital storytelling and bilingual reading engagement.</p>
+                    <a href="https://f1re88.github.io/Story/" class="btn" data-en="View Project" data-ar="عرض المشروع">View Project</a>
+                </div>
+                
+                <div class="project-card">
+                    <h3><img src="game.png" alt="" width="35" height="35"><span data-en="Game" data-ar="لعبة وورد وول">Game</span></h3>
+                    <p data-en="A modern interactive trivia application engineered for gaming knowledge assessment and quiz engagement."
+                       data-ar="تطبيق مسابقات تفاعلي حديث تم تطويره لتقييم المعلومات والألعاب والأسئلة التنافسية.">A modern interactive trivia application engineered for gaming knowledge assessment and quiz engagement.</p>
+                    <a href="https://f1re88.github.io/Gamewordwall/" class="btn" data-en="View Project" data-ar="عرض المشروع">View Project</a>
+                </div>
+                
+                <div class="project-card">
+                    <h3><img src="pyramid.png" alt="" width="35" height="35"><span data-en="Pyramids" data-ar="الأهرامات">Pyramids</span></h3>
+                    <p data-en="A modern historical tourism framework engineered for educational content presentation and AI integration."
+                       data-ar="إطار عمل سياحي وتاريخي تم بناؤه لعرض المحتوى التعليمي ودمج تقنيات الذكاء الاصطناعي.">A modern historical tourism framework engineered for educational content presentation and AI integration.</p>
+                    <a href="https://f1re88.github.io/Pyramid/" class="btn" data-en="View Project" data-ar="عرض المشروع">View Project</a>
+                </div>
+
+                <div class="project-card">
+                    <h3><img src="tech.png" alt="" width="35" height="35"><span data-en="Tech World Egypt" data-ar="عالم التقنية مصر">Tech World Egypt</span></h3>
+                    <p data-en="A modern digital commerce framework engineered for consumer electronics presentation and customer engagement."
+                       data-ar="منصة تجارة رقمية متطورة تم تصميمها لعرض الأجهزة الإلكترونية الاستهلاكية والتفاعل مع العملاء.">A modern digital commerce framework engineered for consumer electronics presentation and customer engagement.</p>
+                    <a href="https://f1re88.github.io/Tech-word-egypt/" class="btn" data-en="View Project" data-ar="عرض المشروع">View Project</a>
+                </div>
+
+                <div class="project-card">
+                    <h3><img src="Fnaf.gif" alt="" width="35" height="35"><span data-en="Fnaf" data-ar="فناف">Fnaf</span></h3>
+                    <p data-en="A modern media fan platform engineered for franchise information delivery and interactive showcase."
+                       data-ar="منصة إعلامية ترفيهية مخصصة لمعجبي السلسلة ومصممة لتقديم معلومات وعروض تفاعلية.">A modern media fan platform engineered for franchise information delivery and interactive showcase.</p>
+                    <a href="https://f1re88.github.io/fnaf/" class="btn" data-en="View Project" data-ar="عرض المشروع">View Project</a>
+                </div>
+
             </div>
         </div>
     </section>
 
     <section id="contact" class="content-section">
         <div class="section-container">
-            <h2>Get In Touch</h2>
+            <h2 data-en="Get In Touch" data-ar="تواصل معي">Get In Touch</h2>
             <div class="underline"></div>
-            <p>Want to collaborate or just say hello? Feel free to reach out through my GitHub profile or connect online!</p>
-            <a href="mailto:your-email@example.com" class="contact-btn">Send an Email</a>
+            <p data-en="Want to collaborate or just say hello? Choose your preferred method to connect directly with me!"
+               data-ar="هل تريد التعاون معي في مشروع أو ترغب فقط في إلقاء التحية؟ اختر وسيلة التواصل المفضلة لديك للتحدث معي مباشرة!">Want to collaborate or just say hello? Choose your preferred method to connect directly with me!</p>
+            <button class="contact-btn" id="open-contact-modal" data-en="Contact Me" data-ar="تواصل معي">Contact Me</button>
         </div>
     </section>
 
+    <div class="modal-overlay" id="contact-modal">
+        <div class="modal-box">
+            <span class="modal-close" id="close-contact-modal">&times;</span>
+            <h3 data-en="Choose Platform" data-ar="اختر المنصة">Choose Platform</h3>
+            <p data-en="Select any channel to start chatting right now" data-ar="اختر أي طريقة لبدء المحادثة على الفور">Select any channel to start chatting right now</p>
+            <div class="modal-options">
+                <a href="https://wa.me/966572005086" target="_blank" class="modal-link modal-whatsapp">
+                    <i class="fab fa-whatsapp"></i> WhatsApp
+                </a>
+                <a href="https://discord.com/users/f1re__blaack88" target="_blank" class="modal-link modal-discord">
+                    <i class="fab fa-discord"></i> Discord
+                </a>
+                <a href="https://m.me/F1RE88" target="_blank" class="modal-link modal-messenger">
+                    <i class="fab fa-facebook-messenger"></i> Messenger
+                </a>
+                <a href="https://www.facebook.com/F1RE88" target="_blank" class="modal-link modal-facebook">
+                    <i class="fab fa-facebook"></i> Facebook
+                </a>
+            </div>
+        </div>
+    </div>
+
     <footer>
-        <p>&copy; 2026 F1RE88. All Rights Reserved.</p>
+        <p>&copy; 2026 F1RE88. <span data-en="All Rights Reserved." data-ar="جميع الحقوق محفوظة.">All Rights Reserved.</span></p>
     </footer>
+
+    <script>
+        // Language Toggle Logic
+        const langToggleBtn = document.getElementById('lang-toggle');
+        const translatableElements = document.querySelectorAll('[data-en]');
+        let currentLang = 'en';
+
+        langToggleBtn.addEventListener('click', () => {
+            if (currentLang === 'en') {
+                currentLang = 'ar';
+                document.body.classList.add('rtl');
+                langToggleBtn.textContent = 'English';
+                
+                translatableElements.forEach(element => {
+                    element.textContent = element.getAttribute('data-ar');
+                });
+            } else {
+                currentLang = 'en';
+                document.body.classList.remove('rtl');
+                langToggleBtn.textContent = 'العربية';
+                
+                translatableElements.forEach(element => {
+                    element.textContent = element.getAttribute('data-en');
+                });
+            }
+        });
+
+        // Hamburger Menu Drawer Controller Interactivity Logic
+        const hamburgerBtn = document.getElementById('hamburger-toggle');
+        const menuLinksContainer = document.getElementById('menu-links');
+        const internalMenuLinks = document.querySelectorAll('#menu-links a');
+
+        // Toggle state rules on hamburger menu button trigger click
+        hamburgerBtn.addEventListener('click', () => {
+            hamburgerBtn.classList.toggle('active');
+            menuLinksContainer.classList.toggle('active');
+        });
+
+        // Auto collapse open dropdown drawers window panels if any item anchors get clicked
+        internalMenuLinks.forEach(linkItem => {
+            linkItem.addEventListener('click', () => {
+                hamburgerBtn.classList.remove('active');
+                menuLinksContainer.classList.remove('active');
+            });
+        });
+
+        // Pop-up Modal Interactivity Logic
+        const contactModal = document.getElementById('contact-modal');
+        const openModalBtn = document.getElementById('open-contact-modal');
+        const closeModalBtn = document.getElementById('close-contact-modal');
+
+        openModalBtn.addEventListener('click', () => {
+            contactModal.classList.add('active');
+        });
+
+        closeModalBtn.addEventListener('click', () => {
+            contactModal.classList.remove('active');
+        });
+
+        // Close Pop-up if user clicks outside the inner dynamic modal block window
+        window.addEventListener('click', (e) => {
+            if (e.target === contactModal) {
+                contactModal.classList.remove('active');
+            }
+        });
+    </script>
 
 </body>
 </html>
