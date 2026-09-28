@@ -267,9 +267,34 @@ body.rtl .hero-section h1 {
 .section-container p {
     color: #cbd5e1;
     font-size: 1.1rem;
-    max-width: 700px;
-    margin: 0 auto;
     word-wrap: break-word;
+}
+
+/* About Me Responsive Layout */
+.about-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2.5rem;
+    text-align: left;
+}
+
+body.rtl .about-content {
+    text-align: right;
+}
+
+.about-text {
+    flex: 1;
+}
+
+.about-text p {
+    max-width: 100%;
+    margin: 0;
+}
+
+.about-img {
+    width: 7    0%;
+    height: 100%;
 }
 
 /* Projects Grid (Responsive) */
@@ -498,6 +523,21 @@ footer {
         display: flex; /* Show menu toggle */
     }
 
+    /* About me mobile: image comes under text */
+    .about-content {
+        flex-direction: column;
+        text-align: center;
+        gap: 1.75rem;
+    }
+
+    body.rtl .about-content {
+        text-align: center;
+    }
+
+    .about-img-container {
+        margin: 0 auto;
+    }
+
     /* Full-width top-to-bottom drop panel styling */
     .nav-links {
         position: fixed;
@@ -676,12 +716,20 @@ footer {
         </div>
     </header>
 
+    <!-- Updated About Me Section -->
     <section id="about" class="content-section">
         <div class="section-container">
             <h2 data-en="About Me" data-ar="من أنا">About Me</h2>
             <div class="underline"></div>
-            <p data-en="Welcome to my official platform. My alias username is F1RE88, but my real name is Hamza. I am passionate about web development, building clean user interfaces, exploring new programming frameworks, and working on creative digital projects. I have 3 years of development experience that you can trust, with a versatile technical background spanning Front-end, Back-end, Motion Graphics, and Android App Development. Dive in to see what I've been working on lately!"
-               data-ar="مرحباً بكم في منصتي الرسمية. اسم الشهرة الخاص بي هو F1RE88، ولكن اسمي الحقيقي هو حمزة. أنا شغوف بتطوير الويب، وبناء واجهات مستخدم متميزة، واستكشاف أطر البرمجة الجديدة، والعمل على مشاريع رقمية إبداعية. لدي 3 سنوات من الخبرة في التطوير وبخلفية تقنية متنوعة تشمل الواجهات الأمامية، الخلفية، الموشن جرافيك، وتطوير تطبيقات الأندرويد. تفضل بالاطلاع على آخر أعمالي!">Welcome to my official platform. My alias username is F1RE88, but my real name is Hamza. I am passionate about web development, building clean user interfaces, exploring new programming frameworks, and working on creative digital projects. I have 3 years of development experience that you can trust, with a versatile technical background spanning Front-end, Back-end, Motion Graphics, and Android App Development. Dive in to see what I've been working on lately!</p>
+            <div class="about-content">
+                <div class="about-img-container">
+                    <img src="./greenscreen-done.gif" alt="Hamza - About Me Photo" class="about-img">
+                </div>
+                <div class="about-text">
+                    <p data-en="Welcome to my official platform. My alias username is F1RE88, but my real name is Hamza. I am passionate about web development, building clean user interfaces, exploring new programming frameworks, and working on creative digital projects. I have 3 years of development experience that you can trust, with a versatile technical background spanning Front-end, Back-end, Motion Graphics, and Android App Development. Dive in to see what I've been working on lately!"
+                       data-ar="مرحباً بكم في منصتي الرسمية. اسم الشهرة الخاص بي هو F1RE88، ولكن اسمي الحقيقي هو حمزة. أنا شغوف بتطوير الويب، وبناء واجهات مستخدم متميزة، واستكشاف أطر البرمجة الجديدة، والعمل على مشاريع رقمية إبداعية. لدي 3 سنوات من الخبرة في التطوير وبخلفية تقنية متنوعة تشمل الواجهات الأمامية، الخلفية، الموشن جرافيك، وتطوير تطبيقات الأندرويد. تفضل بالاطلاع على آخر أعمالي!">Welcome to my official platform. My alias username is F1RE88, but my real name is Hamza. I am passionate about web development, building clean user interfaces, exploring new programming frameworks, and working on creative digital projects. I have 3 years of development experience that you can trust, with a versatile technical background spanning Front-end, Back-end, Motion Graphics, and Android App Development. Dive in to see what I've been working on lately!</p>
+                </div>
+            </div>
         </div>
     </section>
 
